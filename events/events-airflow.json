@@ -1,0 +1,1364 @@
+[
+    {
+        "job": {
+            "name": "order_analysis",
+            "facets": {},
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "69b3f1ff-2318-37cb-afb3-35d818a04b0d",
+            "facets": {
+                "nominalTime": {
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/NominalTimeRunFacet",
+                    "nominalEndTime": "2023-02-27T00:00:00Z",
+                    "nominalStartTime": "2023-02-26T00:00:00Z"
+                }
+            }
+        },
+        "inputs": [],
+        "outputs": [],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:34.713883Z",
+        "eventType": "START"
+    },
+    {
+        "job": {
+            "name": "order_analysis.import_orders",
+            "facets": {
+                "sql": {
+                    "query": "DROP TABLE IF EXISTS orders;\n\n\nCREATE TABLE orders (\n    order_id SERIAL PRIMARY KEY,\n    order_date TIMESTAMP NOT NULL,\n    product CHAR(50) NOT NULL,\n    price INT NOT NULL,\n    quantity INT NOT NULL\n);\n\n\nINSERT INTO\n    orders (\n        order_date,\n        product,\n        price,\n        quantity\n    )\nVALUES\n    ('2022-01-10', 'Acme Anvil', '9', '1'),\n    ('2022-01-12', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-01-17', 'Plastic Record Player', '7', '1'),\n    ('2022-01-23', 'Ceramic Solo Cup', '1', '4'),\n    ('2022-02-14', 'Gutteral Screen', '12', '1'),\n    ('2022-02-18', 'Stuffed Shirt', '2', '2'),\n    ('2022-02-22', 'Acme Anvil', '3', '1'),\n    ('2022-02-26', 'Backwards Bicycle', '16', '1'),\n    ('2022-02-28', 'Gutteral Screen', '12', '1'),\n    ('2022-03-01', 'Acme Anvil', '3', '3'),\n    ('2022-03-03', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-03-09', 'Plastic Record Player', '7', '1'),\n    ('2022-03-13', 'Acme Anvil', '3', '6'),\n    ('2022-03-20', 'Stuffed Shirt', '2', '1'),\n    ('2022-03-30', 'Acme Anvil', '3', '2'),\n    ('2022-04-08', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-04-08', 'Backwards Bicycle', '16', '1'),\n    ('2022-04-10', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-13', 'Acme Anvil', '9', '3'),\n    ('2022-04-18', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-26', 'Acme Anvil', '3', '1'),\n    ('2022-05-02', 'Hypercolor T-Shirt', '3', '2'),\n    ('2022-05-04', 'Gutteral Screen', '12', '1'),\n    ('2022-05-07', 'Backwards Bicycle', '16', '2'),\n    ('2022-05-11', 'Plastic Record Player', '7', '1'),\n    ('2022-05-17', 'Acme Anvil', '3', '1')",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SqlJobFacet"
+                },
+                "ownership": {
+                    "owners": [
+                        {
+                            "name": "airflow"
+                        }
+                    ],
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/OwnershipJobFacet"
+                }
+            },
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "74aa5b86-9cd0-318a-bcdb-10f58263fb67",
+            "facets": {
+                "parent": {
+                    "job": {
+                        "name": "order_analysis",
+                        "namespace": "default"
+                    },
+                    "run": {
+                        "runId": "69b3f1ff-2318-37cb-afb3-35d818a04b0d"
+                    },
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ParentRunFacet"
+                },
+                "airflow": {
+                    "dag": {
+                        "tags": "[]",
+                        "dag_id": "order_analysis",
+                        "timetable": {
+                            "timezone": "UTC",
+                            "expression": "0 0 * * *"
+                        },
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "schedule_interval": "@daily"
+                    },
+                    "task": {
+                        "sql": "DROP TABLE IF EXISTS orders;\n\nCREATE TABLE orders (\n    order_id SERIAL PRIMARY KEY,\n    order_date TIMESTAMP NOT NULL,\n    product CHAR(50) NOT NULL,\n    price INT NOT NULL,\n    quantity INT NOT NULL\n);\n\nINSERT INTO\n    orders (\n        order_date,\n        product,\n        price,\n        quantity\n    )\nVALUES\n    ('2022-01-10', 'Acme Anvil', '9', '1'),\n    ('2022-01-12', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-01-17', 'Plastic Record Player', '7', '1'),\n    ('2022-01-23', 'Ceramic Solo Cup', '1', '4'),\n    ('2022-02-14', 'Gutteral Screen', '12', '1'),\n    ('2022-02-18', 'Stuffed Shirt', '2', '2'),\n    ('2022-02-22', 'Acme Anvil', '3', '1'),\n    ('2022-02-26', 'Backwards Bicycle', '16', '1'),\n    ('2022-02-28', 'Gutteral Screen', '12', '1'),\n    ('2022-03-01', 'Acme Anvil', '3', '3'),\n    ('2022-03-03', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-03-09', 'Plastic Record Player', '7', '1'),\n    ('2022-03-13', 'Acme Anvil', '3', '6'),\n    ('2022-03-20', 'Stuffed Shirt', '2', '1'),\n    ('2022-03-30', 'Acme Anvil', '3', '2'),\n    ('2022-04-08', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-04-08', 'Backwards Bicycle', '16', '1'),\n    ('2022-04-10', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-13', 'Acme Anvil', '9', '3'),\n    ('2022-04-18', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-26', 'Acme Anvil', '3', '1'),\n    ('2022-05-02', 'Hypercolor T-Shirt', '3', '2'),\n    ('2022-05-04', 'Gutteral Screen', '12', '1'),\n    ('2022-05-07', 'Backwards Bicycle', '16', '2'),\n    ('2022-05-11', 'Plastic Record Player', '7', '1'),\n    ('2022-05-17', 'Acme Anvil', '3', '1');",
+                        "args": {
+                            "sql": "DROP TABLE IF EXISTS orders;\n\nCREATE TABLE orders (\n    order_id SERIAL PRIMARY KEY,\n    order_date TIMESTAMP NOT NULL,\n    product CHAR(50) NOT NULL,\n    price INT NOT NULL,\n    quantity INT NOT NULL\n);\n\nINSERT INTO\n    orders (\n        order_date,\n        product,\n        price,\n        quantity\n    )\nVALUES\n    ('2022-01-10', 'Acme Anvil', '9', '1'),\n    ('2022-01-12', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-01-17', 'Plastic Record Player', '7', '1'),\n    ('2022-01-23', 'Ceramic Solo Cup', '1', '4'),\n    ('2022-02-14', 'Gutteral Screen', '12', '1'),\n    ('2022-02-18', 'Stuffed Shirt', '2', '2'),\n    ('2022-02-22', 'Acme Anvil', '3', '1'),\n    ('2022-02-26', 'Backwards Bicycle', '16', '1'),\n    ('2022-02-28', 'Gutteral Screen', '12', '1'),\n    ('2022-03-01', 'Acme Anvil', '3', '3'),\n    ('2022-03-03', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-03-09', 'Plastic Record Player', '7', '1'),\n    ('2022-03-13', 'Acme Anvil', '3', '6'),\n    ('2022-03-20', 'Stuffed Shirt', '2', '1'),\n    ('2022-03-30', 'Acme Anvil', '3', '2'),\n    ('2022-04-08', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-04-08', 'Backwards Bicycle', '16', '1'),\n    ('2022-04-10', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-13', 'Acme Anvil', '9', '3'),\n    ('2022-04-18', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-26', 'Acme Anvil', '3', '1'),\n    ('2022-05-02', 'Hypercolor T-Shirt', '3', '2'),\n    ('2022-05-04', 'Gutteral Screen', '12', '1'),\n    ('2022-05-07', 'Backwards Bicycle', '16', '2'),\n    ('2022-05-11', 'Plastic Record Player', '7', '1'),\n    ('2022-05-17', 'Acme Anvil', '3', '1');",
+                            "conn_id": "testdb",
+                            "retries": 1,
+                            "task_id": "import_orders",
+                            "retry_delay": "0:01:00",
+                            "email_on_retry": false,
+                            "email_on_failure": false,
+                            "postgres_conn_id": "testdb"
+                        },
+                        "pool": "default_pool",
+                        "owner": "airflow",
+                        "queue": "default",
+                        "inlets": "[]",
+                        "mapped": false,
+                        "conn_id": "testdb",
+                        "outlets": "[]",
+                        "retries": 1,
+                        "task_id": "import_orders",
+                        "autocommit": false,
+                        "pool_slots": 1,
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "hook_params": {},
+                        "return_last": true,
+                        "weight_rule": "downstream",
+                        "do_xcom_push": true,
+                        "trigger_rule": "all_success",
+                        "email_on_retry": false,
+                        "operator_class": "airflow.providers.postgres.operators.postgres.PostgresOperator",
+                        "depends_on_past": false,
+                        "executor_config": {},
+                        "priority_weight": 1,
+                        "email_on_failure": false,
+                        "retry_on_failure": true,
+                        "upstream_task_ids": "['start']",
+                        "downstream_task_ids": "['summarize_months']",
+                        "wait_for_downstream": false,
+                        "retry_exponential_backoff": false,
+                        "ignore_first_depends_on_past": true
+                    },
+                    "dagRun": {
+                        "conf": {},
+                        "dag_id": "order_analysis",
+                        "run_id": "manual__2023-02-27T23:06:32.882428+00:00",
+                        "run_type": "manual",
+                        "start_date": "2023-02-27T23:06:34.713883+00:00",
+                        "external_trigger": true,
+                        "data_interval_end": "2023-02-27T00:00:00+00:00",
+                        "data_interval_start": "2023-02-26T00:00:00+00:00"
+                    },
+                    "taskUuid": "74aa5b86-9cd0-318a-bcdb-10f58263fb67",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "taskInstance": {
+                        "pool": "default_pool",
+                        "try_number": 1
+                    }
+                },
+                "nominalTime": {
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/NominalTimeRunFacet",
+                    "nominalEndTime": "2023-02-27T00:00:00Z",
+                    "nominalStartTime": "2023-02-26T00:00:00Z"
+                },
+                "airflow_runArgs": {
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "externalTrigger": true
+                },
+                "airflow_version": {
+                    "operator": "airflow.providers.postgres.operators.postgres.PostgresOperator",
+                    "taskInfo": {
+                        "sql": "DROP TABLE IF EXISTS orders;\n\nCREATE TABLE orders (\n    order_id SERIAL PRIMARY KEY,\n    order_date TIMESTAMP NOT NULL,\n    product CHAR(50) NOT NULL,\n    price INT NOT NULL,\n    quantity INT NOT NULL\n);\n\nINSERT INTO\n    orders (\n        order_date,\n        product,\n        price,\n        quantity\n    )\nVALUES\n    ('2022-01-10', 'Acme Anvil', '9', '1'),\n    ('2022-01-12', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-01-17', 'Plastic Record Player', '7', '1'),\n    ('2022-01-23', 'Ceramic Solo Cup', '1', '4'),\n    ('2022-02-14', 'Gutteral Screen', '12', '1'),\n    ('2022-02-18', 'Stuffed Shirt', '2', '2'),\n    ('2022-02-22', 'Acme Anvil', '3', '1'),\n    ('2022-02-26', 'Backwards Bicycle', '16', '1'),\n    ('2022-02-28', 'Gutteral Screen', '12', '1'),\n    ('2022-03-01', 'Acme Anvil', '3', '3'),\n    ('2022-03-03', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-03-09', 'Plastic Record Player', '7', '1'),\n    ('2022-03-13', 'Acme Anvil', '3', '6'),\n    ('2022-03-20', 'Stuffed Shirt', '2', '1'),\n    ('2022-03-30', 'Acme Anvil', '3', '2'),\n    ('2022-04-08', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-04-08', 'Backwards Bicycle', '16', '1'),\n    ('2022-04-10', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-13', 'Acme Anvil', '9', '3'),\n    ('2022-04-18', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-26', 'Acme Anvil', '3', '1'),\n    ('2022-05-02', 'Hypercolor T-Shirt', '3', '2'),\n    ('2022-05-04', 'Gutteral Screen', '12', '1'),\n    ('2022-05-07', 'Backwards Bicycle', '16', '2'),\n    ('2022-05-11', 'Plastic Record Player', '7', '1'),\n    ('2022-05-17', 'Acme Anvil', '3', '1');",
+                        "_dag": {
+                            "tags": [],
+                            "dag_id": "order_analysis",
+                            "schedule_interval": "@daily"
+                        },
+                        "_log": "<Logger airflow.task.operators (INFO)>",
+                        "pool": "default_pool",
+                        "_hook": "<airflow.providers.postgres.hooks.postgres.PostgresHook object at 0x10b7bed70>",
+                        "owner": "airflow",
+                        "queue": "default",
+                        "inlets": [],
+                        "params": "{}",
+                        "conn_id": "testdb",
+                        "dag_run": {
+                            "id": 4,
+                            "conf": {},
+                            "_state": "running",
+                            "dag_id": "order_analysis",
+                            "run_id": "manual__2023-02-27T23:06:32.882428+00:00",
+                            "dag_hash": "08b17cdca2abe446eaeaa5696c3f761a",
+                            "run_type": "manual",
+                            "queued_at": "2023-02-27T23:06:32.897405+00:00",
+                            "start_date": "2023-02-27T23:06:34.713883+00:00",
+                            "updated_at": "2023-02-27T23:06:35.643464+00:00",
+                            "execution_date": "2023-02-27T23:06:32.882428+00:00",
+                            "log_template_id": 2,
+                            "external_trigger": true,
+                            "data_interval_end": "2023-02-27T00:00:00+00:00",
+                            "_sa_instance_state": "<sqlalchemy.orm.state.InstanceState object at 0x10b5ea4a0>",
+                            "data_interval_start": "2023-02-26T00:00:00+00:00",
+                            "last_scheduling_decision": "2023-02-27T23:06:35.640770+00:00"
+                        },
+                        "handler": "<function fetch_all_handler at 0x1092b8550>",
+                        "outlets": [],
+                        "retries": 1,
+                        "task_id": "import_orders",
+                        "autocommit": false,
+                        "pool_slots": 1,
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "task_group": "<airflow.utils.task_group.TaskGroup object at 0x10b78f700>",
+                        "hook_params": {},
+                        "retry_delay": "0:01:00",
+                        "return_last": true,
+                        "weight_rule": "downstream",
+                        "do_xcom_push": true,
+                        "trigger_rule": "all_success",
+                        "email_on_retry": false,
+                        "depends_on_past": false,
+                        "executor_config": {},
+                        "priority_weight": 1,
+                        "email_on_failure": false,
+                        "retry_on_failure": true,
+                        "upstream_task_ids": "{'start'}",
+                        "downstream_task_ids": "{'summarize_months'}",
+                        "wait_for_downstream": false,
+                        "retry_exponential_backoff": false,
+                        "_BaseOperator__from_mapped": false,
+                        "_BaseOperator__init_kwargs": {
+                            "sql": "DROP TABLE IF EXISTS orders;\n\nCREATE TABLE orders (\n    order_id SERIAL PRIMARY KEY,\n    order_date TIMESTAMP NOT NULL,\n    product CHAR(50) NOT NULL,\n    price INT NOT NULL,\n    quantity INT NOT NULL\n);\n\nINSERT INTO\n    orders (\n        order_date,\n        product,\n        price,\n        quantity\n    )\nVALUES\n    ('2022-01-10', 'Acme Anvil', '9', '1'),\n    ('2022-01-12', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-01-17', 'Plastic Record Player', '7', '1'),\n    ('2022-01-23', 'Ceramic Solo Cup', '1', '4'),\n    ('2022-02-14', 'Gutteral Screen', '12', '1'),\n    ('2022-02-18', 'Stuffed Shirt', '2', '2'),\n    ('2022-02-22', 'Acme Anvil', '3', '1'),\n    ('2022-02-26', 'Backwards Bicycle', '16', '1'),\n    ('2022-02-28', 'Gutteral Screen', '12', '1'),\n    ('2022-03-01', 'Acme Anvil', '3', '3'),\n    ('2022-03-03', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-03-09', 'Plastic Record Player', '7', '1'),\n    ('2022-03-13', 'Acme Anvil', '3', '6'),\n    ('2022-03-20', 'Stuffed Shirt', '2', '1'),\n    ('2022-03-30', 'Acme Anvil', '3', '2'),\n    ('2022-04-08', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-04-08', 'Backwards Bicycle', '16', '1'),\n    ('2022-04-10', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-13', 'Acme Anvil', '9', '3'),\n    ('2022-04-18', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-26', 'Acme Anvil', '3', '1'),\n    ('2022-05-02', 'Hypercolor T-Shirt', '3', '2'),\n    ('2022-05-04', 'Gutteral Screen', '12', '1'),\n    ('2022-05-07', 'Backwards Bicycle', '16', '2'),\n    ('2022-05-11', 'Plastic Record Player', '7', '1'),\n    ('2022-05-17', 'Acme Anvil', '3', '1');",
+                            "conn_id": "testdb",
+                            "retries": 1,
+                            "task_id": "import_orders",
+                            "retry_delay": "0:01:00",
+                            "email_on_retry": false,
+                            "email_on_failure": false,
+                            "postgres_conn_id": "testdb"
+                        },
+                        "_BaseOperator__instantiated": true,
+                        "ignore_first_depends_on_past": true
+                    },
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "airflowVersion": "2.5.1",
+                    "openlineageAirflowVersion": "0.20.6"
+                },
+                "processing_engine": {
+                    "name": "Airflow",
+                    "version": "2.5.1",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ProcessingEngineRunFacet",
+                    "openlineageAdapterVersion": "0.20.6"
+                }
+            }
+        },
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "testdb.public.orders",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "order_id",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "order_date",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "price",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "quantity",
+                                "type": "int4"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:36.714874Z",
+        "eventType": "START"
+    },
+    {
+        "job": {
+            "name": "order_analysis.import_orders",
+            "facets": {
+                "sql": {
+                    "query": "DROP TABLE IF EXISTS orders;\n\n\nCREATE TABLE orders (\n    order_id SERIAL PRIMARY KEY,\n    order_date TIMESTAMP NOT NULL,\n    product CHAR(50) NOT NULL,\n    price INT NOT NULL,\n    quantity INT NOT NULL\n);\n\n\nINSERT INTO\n    orders (\n        order_date,\n        product,\n        price,\n        quantity\n    )\nVALUES\n    ('2022-01-10', 'Acme Anvil', '9', '1'),\n    ('2022-01-12', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-01-17', 'Plastic Record Player', '7', '1'),\n    ('2022-01-23', 'Ceramic Solo Cup', '1', '4'),\n    ('2022-02-14', 'Gutteral Screen', '12', '1'),\n    ('2022-02-18', 'Stuffed Shirt', '2', '2'),\n    ('2022-02-22', 'Acme Anvil', '3', '1'),\n    ('2022-02-26', 'Backwards Bicycle', '16', '1'),\n    ('2022-02-28', 'Gutteral Screen', '12', '1'),\n    ('2022-03-01', 'Acme Anvil', '3', '3'),\n    ('2022-03-03', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-03-09', 'Plastic Record Player', '7', '1'),\n    ('2022-03-13', 'Acme Anvil', '3', '6'),\n    ('2022-03-20', 'Stuffed Shirt', '2', '1'),\n    ('2022-03-30', 'Acme Anvil', '3', '2'),\n    ('2022-04-08', 'Hypercolor T-Shirt', '3', '1'),\n    ('2022-04-08', 'Backwards Bicycle', '16', '1'),\n    ('2022-04-10', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-13', 'Acme Anvil', '9', '3'),\n    ('2022-04-18', 'Ceramic Solo Cup', '1', '1'),\n    ('2022-04-26', 'Acme Anvil', '3', '1'),\n    ('2022-05-02', 'Hypercolor T-Shirt', '3', '2'),\n    ('2022-05-04', 'Gutteral Screen', '12', '1'),\n    ('2022-05-07', 'Backwards Bicycle', '16', '2'),\n    ('2022-05-11', 'Plastic Record Player', '7', '1'),\n    ('2022-05-17', 'Acme Anvil', '3', '1')",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SqlJobFacet"
+                }
+            },
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "74aa5b86-9cd0-318a-bcdb-10f58263fb67",
+            "facets": {}
+        },
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "testdb.public.orders",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "order_id",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "order_date",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "price",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "quantity",
+                                "type": "int4"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:39.112965Z",
+        "eventType": "COMPLETE"
+    },
+    {
+        "job": {
+            "name": "order_analysis.summarize_months",
+            "facets": {
+                "sql": {
+                    "query": "DROP TABLE IF EXISTS monthly_summary;\n\n\nCREATE TABLE monthly_summary AS\nSELECT\n    DATE_TRUNC('month', order_date) AS month,\n    product,\n    count(order_id) as num_orders,\n    sum(quantity) as total_quantity,\n    sum(price * quantity) as total_value\nFROM\n    orders\ngroup by\n    month,\n    product",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SqlJobFacet"
+                },
+                "ownership": {
+                    "owners": [
+                        {
+                            "name": "airflow"
+                        }
+                    ],
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/OwnershipJobFacet"
+                }
+            },
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "38dd1ca7-357b-3e27-ba57-ce28fc0f60e2",
+            "facets": {
+                "parent": {
+                    "job": {
+                        "name": "order_analysis",
+                        "namespace": "default"
+                    },
+                    "run": {
+                        "runId": "69b3f1ff-2318-37cb-afb3-35d818a04b0d"
+                    },
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ParentRunFacet"
+                },
+                "airflow": {
+                    "dag": {
+                        "tags": "[]",
+                        "dag_id": "order_analysis",
+                        "timetable": {
+                            "timezone": "UTC",
+                            "expression": "0 0 * * *"
+                        },
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "schedule_interval": "@daily"
+                    },
+                    "task": {
+                        "sql": "DROP TABLE IF EXISTS monthly_summary;\n\nCREATE TABLE monthly_summary AS\nSELECT\n    DATE_TRUNC('month', order_date) AS month,\n    product,\n    count(order_id) as num_orders,\n    sum(quantity) as total_quantity,\n    sum(price * quantity) as total_value\nFROM\n    orders\ngroup by\n    month,\n    product;",
+                        "args": {
+                            "sql": "DROP TABLE IF EXISTS monthly_summary;\n\nCREATE TABLE monthly_summary AS\nSELECT\n    DATE_TRUNC('month', order_date) AS month,\n    product,\n    count(order_id) as num_orders,\n    sum(quantity) as total_quantity,\n    sum(price * quantity) as total_value\nFROM\n    orders\ngroup by\n    month,\n    product;",
+                            "conn_id": "testdb",
+                            "retries": 1,
+                            "task_id": "summarize_months",
+                            "retry_delay": "0:01:00",
+                            "email_on_retry": false,
+                            "email_on_failure": false,
+                            "postgres_conn_id": "testdb"
+                        },
+                        "pool": "default_pool",
+                        "owner": "airflow",
+                        "queue": "default",
+                        "inlets": "[]",
+                        "mapped": false,
+                        "conn_id": "testdb",
+                        "outlets": "[]",
+                        "retries": 1,
+                        "task_id": "summarize_months",
+                        "autocommit": false,
+                        "pool_slots": 1,
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "hook_params": {},
+                        "return_last": true,
+                        "weight_rule": "downstream",
+                        "do_xcom_push": true,
+                        "trigger_rule": "all_success",
+                        "email_on_retry": false,
+                        "operator_class": "airflow.providers.postgres.operators.postgres.PostgresOperator",
+                        "depends_on_past": false,
+                        "executor_config": {},
+                        "priority_weight": 1,
+                        "email_on_failure": false,
+                        "retry_on_failure": true,
+                        "upstream_task_ids": "['import_orders']",
+                        "downstream_task_ids": "['find_popular_products']",
+                        "wait_for_downstream": false,
+                        "retry_exponential_backoff": false,
+                        "ignore_first_depends_on_past": true
+                    },
+                    "dagRun": {
+                        "conf": {},
+                        "dag_id": "order_analysis",
+                        "run_id": "manual__2023-02-27T23:06:32.882428+00:00",
+                        "run_type": "manual",
+                        "start_date": "2023-02-27T23:06:34.713883+00:00",
+                        "external_trigger": true,
+                        "data_interval_end": "2023-02-27T00:00:00+00:00",
+                        "data_interval_start": "2023-02-26T00:00:00+00:00"
+                    },
+                    "taskUuid": "38dd1ca7-357b-3e27-ba57-ce28fc0f60e2",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "taskInstance": {
+                        "pool": "default_pool",
+                        "try_number": 1
+                    }
+                },
+                "nominalTime": {
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/NominalTimeRunFacet",
+                    "nominalEndTime": "2023-02-27T00:00:00Z",
+                    "nominalStartTime": "2023-02-26T00:00:00Z"
+                },
+                "airflow_runArgs": {
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "externalTrigger": true
+                },
+                "airflow_version": {
+                    "operator": "airflow.providers.postgres.operators.postgres.PostgresOperator",
+                    "taskInfo": {
+                        "sql": "DROP TABLE IF EXISTS monthly_summary;\n\nCREATE TABLE monthly_summary AS\nSELECT\n    DATE_TRUNC('month', order_date) AS month,\n    product,\n    count(order_id) as num_orders,\n    sum(quantity) as total_quantity,\n    sum(price * quantity) as total_value\nFROM\n    orders\ngroup by\n    month,\n    product;",
+                        "_dag": {
+                            "tags": [],
+                            "dag_id": "order_analysis",
+                            "schedule_interval": "@daily"
+                        },
+                        "_log": "<Logger airflow.task.operators (INFO)>",
+                        "pool": "default_pool",
+                        "_hook": "<airflow.providers.postgres.hooks.postgres.PostgresHook object at 0x108e5aef0>",
+                        "owner": "airflow",
+                        "queue": "default",
+                        "inlets": [],
+                        "params": "{}",
+                        "conn_id": "testdb",
+                        "dag_run": {
+                            "id": 4,
+                            "conf": {},
+                            "_state": "running",
+                            "dag_id": "order_analysis",
+                            "run_id": "manual__2023-02-27T23:06:32.882428+00:00",
+                            "dag_hash": "08b17cdca2abe446eaeaa5696c3f761a",
+                            "run_type": "manual",
+                            "queued_at": "2023-02-27T23:06:32.897405+00:00",
+                            "start_date": "2023-02-27T23:06:34.713883+00:00",
+                            "updated_at": "2023-02-27T23:06:39.878066+00:00",
+                            "execution_date": "2023-02-27T23:06:32.882428+00:00",
+                            "log_template_id": 2,
+                            "external_trigger": true,
+                            "data_interval_end": "2023-02-27T00:00:00+00:00",
+                            "_sa_instance_state": "<sqlalchemy.orm.state.InstanceState object at 0x10630e5c0>",
+                            "data_interval_start": "2023-02-26T00:00:00+00:00",
+                            "last_scheduling_decision": "2023-02-27T23:06:39.876477+00:00"
+                        },
+                        "handler": "<function fetch_all_handler at 0x1047d4550>",
+                        "outlets": [],
+                        "retries": 1,
+                        "task_id": "summarize_months",
+                        "autocommit": false,
+                        "pool_slots": 1,
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "task_group": "<airflow.utils.task_group.TaskGroup object at 0x108e2b880>",
+                        "hook_params": {},
+                        "retry_delay": "0:01:00",
+                        "return_last": true,
+                        "weight_rule": "downstream",
+                        "do_xcom_push": true,
+                        "trigger_rule": "all_success",
+                        "email_on_retry": false,
+                        "depends_on_past": false,
+                        "executor_config": {},
+                        "priority_weight": 1,
+                        "email_on_failure": false,
+                        "retry_on_failure": true,
+                        "upstream_task_ids": "{'import_orders'}",
+                        "downstream_task_ids": "{'find_popular_products'}",
+                        "wait_for_downstream": false,
+                        "retry_exponential_backoff": false,
+                        "_BaseOperator__from_mapped": false,
+                        "_BaseOperator__init_kwargs": {
+                            "sql": "DROP TABLE IF EXISTS monthly_summary;\n\nCREATE TABLE monthly_summary AS\nSELECT\n    DATE_TRUNC('month', order_date) AS month,\n    product,\n    count(order_id) as num_orders,\n    sum(quantity) as total_quantity,\n    sum(price * quantity) as total_value\nFROM\n    orders\ngroup by\n    month,\n    product;",
+                            "conn_id": "testdb",
+                            "retries": 1,
+                            "task_id": "summarize_months",
+                            "retry_delay": "0:01:00",
+                            "email_on_retry": false,
+                            "email_on_failure": false,
+                            "postgres_conn_id": "testdb"
+                        },
+                        "_BaseOperator__instantiated": true,
+                        "ignore_first_depends_on_past": true
+                    },
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "airflowVersion": "2.5.1",
+                    "openlineageAirflowVersion": "0.20.6"
+                },
+                "processing_engine": {
+                    "name": "Airflow",
+                    "version": "2.5.1",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ProcessingEngineRunFacet",
+                    "openlineageAdapterVersion": "0.20.6"
+                }
+            }
+        },
+        "inputs": [
+            {
+                "name": "testdb.public.orders",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "order_id",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "order_date",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "price",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "quantity",
+                                "type": "int4"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "testdb.public.monthly_summary",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "month",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "num_orders",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_quantity",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_value",
+                                "type": "int8"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    },
+                    "columnLineage": {
+                        "fields": {
+                            "month": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "order_date",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "product": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "product",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "num_orders": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "order_id",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_value": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "price",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    },
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_quantity": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            }
+                        },
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ColumnLineageDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:40.632165Z",
+        "eventType": "START"
+    },
+    {
+        "job": {
+            "name": "order_analysis.summarize_months",
+            "facets": {
+                "sql": {
+                    "query": "DROP TABLE IF EXISTS monthly_summary;\n\n\nCREATE TABLE monthly_summary AS\nSELECT\n    DATE_TRUNC('month', order_date) AS month,\n    product,\n    count(order_id) as num_orders,\n    sum(quantity) as total_quantity,\n    sum(price * quantity) as total_value\nFROM\n    orders\ngroup by\n    month,\n    product",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SqlJobFacet"
+                }
+            },
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "38dd1ca7-357b-3e27-ba57-ce28fc0f60e2",
+            "facets": {}
+        },
+        "inputs": [
+            {
+                "name": "testdb.public.orders",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "order_id",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "order_date",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "price",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "quantity",
+                                "type": "int4"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "testdb.public.monthly_summary",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "month",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "num_orders",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_quantity",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_value",
+                                "type": "int8"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    },
+                    "columnLineage": {
+                        "fields": {
+                            "month": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "order_date",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "product": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "product",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "num_orders": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "order_id",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_value": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "price",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    },
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_quantity": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            }
+                        },
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ColumnLineageDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:41.473871Z",
+        "eventType": "COMPLETE"
+    },
+    {
+        "job": {
+            "name": "order_analysis.find_popular_products",
+            "facets": {
+                "sql": {
+                    "query": "DROP TABLE IF EXISTS top_products;\n\n\nCREATE TABLE top_products AS\nSELECT\n    product,\n    COUNT(order_id) AS num_orders,\n    SUM(quantity) AS total_quantity,\n    SUM(price * quantity) AS total_value\nFROM\n    orders\nGROUP BY\n    product\nORDER BY\n    total_value desc,\n    num_orders desc",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SqlJobFacet"
+                },
+                "ownership": {
+                    "owners": [
+                        {
+                            "name": "airflow"
+                        }
+                    ],
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/OwnershipJobFacet"
+                }
+            },
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "bf0acdf2-967c-3278-982b-1ed4c4941e07",
+            "facets": {
+                "parent": {
+                    "job": {
+                        "name": "order_analysis",
+                        "namespace": "default"
+                    },
+                    "run": {
+                        "runId": "69b3f1ff-2318-37cb-afb3-35d818a04b0d"
+                    },
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ParentRunFacet"
+                },
+                "airflow": {
+                    "dag": {
+                        "tags": "[]",
+                        "dag_id": "order_analysis",
+                        "timetable": {
+                            "timezone": "UTC",
+                            "expression": "0 0 * * *"
+                        },
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "schedule_interval": "@daily"
+                    },
+                    "task": {
+                        "sql": "DROP TABLE IF EXISTS top_products;\n\nCREATE TABLE top_products AS\nSELECT\n    product,\n    COUNT(order_id) AS num_orders,\n    SUM(quantity) AS total_quantity,\n    SUM(price * quantity) AS total_value\nFROM\n    orders\nGROUP BY\n    product\nORDER BY\n    total_value desc,\n    num_orders desc;",
+                        "args": {
+                            "sql": "DROP TABLE IF EXISTS top_products;\n\nCREATE TABLE top_products AS\nSELECT\n    product,\n    COUNT(order_id) AS num_orders,\n    SUM(quantity) AS total_quantity,\n    SUM(price * quantity) AS total_value\nFROM\n    orders\nGROUP BY\n    product\nORDER BY\n    total_value desc,\n    num_orders desc;",
+                            "conn_id": "testdb",
+                            "retries": 1,
+                            "task_id": "find_popular_products",
+                            "retry_delay": "0:01:00",
+                            "email_on_retry": false,
+                            "email_on_failure": false,
+                            "postgres_conn_id": "testdb"
+                        },
+                        "pool": "default_pool",
+                        "owner": "airflow",
+                        "queue": "default",
+                        "inlets": "[]",
+                        "mapped": false,
+                        "conn_id": "testdb",
+                        "outlets": "[]",
+                        "retries": 1,
+                        "task_id": "find_popular_products",
+                        "autocommit": false,
+                        "pool_slots": 1,
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "hook_params": {},
+                        "return_last": true,
+                        "weight_rule": "downstream",
+                        "do_xcom_push": true,
+                        "trigger_rule": "all_success",
+                        "email_on_retry": false,
+                        "operator_class": "airflow.providers.postgres.operators.postgres.PostgresOperator",
+                        "depends_on_past": false,
+                        "executor_config": {},
+                        "priority_weight": 1,
+                        "email_on_failure": false,
+                        "retry_on_failure": true,
+                        "upstream_task_ids": "['summarize_months']",
+                        "downstream_task_ids": "[]",
+                        "wait_for_downstream": false,
+                        "retry_exponential_backoff": false,
+                        "ignore_first_depends_on_past": true
+                    },
+                    "dagRun": {
+                        "conf": {},
+                        "dag_id": "order_analysis",
+                        "run_id": "manual__2023-02-27T23:06:32.882428+00:00",
+                        "run_type": "manual",
+                        "start_date": "2023-02-27T23:06:34.713883+00:00",
+                        "external_trigger": true,
+                        "data_interval_end": "2023-02-27T00:00:00+00:00",
+                        "data_interval_start": "2023-02-26T00:00:00+00:00"
+                    },
+                    "taskUuid": "bf0acdf2-967c-3278-982b-1ed4c4941e07",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "taskInstance": {
+                        "pool": "default_pool",
+                        "try_number": 1
+                    }
+                },
+                "nominalTime": {
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/NominalTimeRunFacet",
+                    "nominalEndTime": "2023-02-27T00:00:00Z",
+                    "nominalStartTime": "2023-02-26T00:00:00Z"
+                },
+                "airflow_runArgs": {
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "externalTrigger": true
+                },
+                "airflow_version": {
+                    "operator": "airflow.providers.postgres.operators.postgres.PostgresOperator",
+                    "taskInfo": {
+                        "sql": "DROP TABLE IF EXISTS top_products;\n\nCREATE TABLE top_products AS\nSELECT\n    product,\n    COUNT(order_id) AS num_orders,\n    SUM(quantity) AS total_quantity,\n    SUM(price * quantity) AS total_value\nFROM\n    orders\nGROUP BY\n    product\nORDER BY\n    total_value desc,\n    num_orders desc;",
+                        "_dag": {
+                            "tags": [],
+                            "dag_id": "order_analysis",
+                            "schedule_interval": "@daily"
+                        },
+                        "_log": "<Logger airflow.task.operators (INFO)>",
+                        "pool": "default_pool",
+                        "_hook": "<airflow.providers.postgres.hooks.postgres.PostgresHook object at 0x10b20f010>",
+                        "owner": "airflow",
+                        "queue": "default",
+                        "inlets": [],
+                        "params": "{}",
+                        "conn_id": "testdb",
+                        "dag_run": {
+                            "id": 4,
+                            "conf": {},
+                            "_state": "running",
+                            "dag_id": "order_analysis",
+                            "run_id": "manual__2023-02-27T23:06:32.882428+00:00",
+                            "dag_hash": "08b17cdca2abe446eaeaa5696c3f761a",
+                            "run_type": "manual",
+                            "queued_at": "2023-02-27T23:06:32.897405+00:00",
+                            "start_date": "2023-02-27T23:06:34.713883+00:00",
+                            "updated_at": "2023-02-27T23:06:42.209819+00:00",
+                            "execution_date": "2023-02-27T23:06:32.882428+00:00",
+                            "log_template_id": 2,
+                            "external_trigger": true,
+                            "data_interval_end": "2023-02-27T00:00:00+00:00",
+                            "_sa_instance_state": "<sqlalchemy.orm.state.InstanceState object at 0x1086ba2f0>",
+                            "data_interval_start": "2023-02-26T00:00:00+00:00",
+                            "last_scheduling_decision": "2023-02-27T23:06:42.208494+00:00"
+                        },
+                        "handler": "<function fetch_all_handler at 0x106b88550>",
+                        "outlets": [],
+                        "retries": 1,
+                        "task_id": "find_popular_products",
+                        "autocommit": false,
+                        "pool_slots": 1,
+                        "start_date": "2022-05-01T00:00:00+00:00",
+                        "task_group": "<airflow.utils.task_group.TaskGroup object at 0x10b1df9d0>",
+                        "hook_params": {},
+                        "retry_delay": "0:01:00",
+                        "return_last": true,
+                        "weight_rule": "downstream",
+                        "do_xcom_push": true,
+                        "trigger_rule": "all_success",
+                        "email_on_retry": false,
+                        "depends_on_past": false,
+                        "executor_config": {},
+                        "priority_weight": 1,
+                        "email_on_failure": false,
+                        "retry_on_failure": true,
+                        "upstream_task_ids": "{'summarize_months'}",
+                        "downstream_task_ids": "set()",
+                        "wait_for_downstream": false,
+                        "retry_exponential_backoff": false,
+                        "_BaseOperator__from_mapped": false,
+                        "_BaseOperator__init_kwargs": {
+                            "sql": "DROP TABLE IF EXISTS top_products;\n\nCREATE TABLE top_products AS\nSELECT\n    product,\n    COUNT(order_id) AS num_orders,\n    SUM(quantity) AS total_quantity,\n    SUM(price * quantity) AS total_value\nFROM\n    orders\nGROUP BY\n    product\nORDER BY\n    total_value desc,\n    num_orders desc;",
+                            "conn_id": "testdb",
+                            "retries": 1,
+                            "task_id": "find_popular_products",
+                            "retry_delay": "0:01:00",
+                            "email_on_retry": false,
+                            "email_on_failure": false,
+                            "postgres_conn_id": "testdb"
+                        },
+                        "_BaseOperator__instantiated": true,
+                        "ignore_first_depends_on_past": true
+                    },
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/BaseFacet",
+                    "airflowVersion": "2.5.1",
+                    "openlineageAirflowVersion": "0.20.6"
+                },
+                "processing_engine": {
+                    "name": "Airflow",
+                    "version": "2.5.1",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ProcessingEngineRunFacet",
+                    "openlineageAdapterVersion": "0.20.6"
+                }
+            }
+        },
+        "inputs": [
+            {
+                "name": "testdb.public.orders",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "order_id",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "order_date",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "price",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "quantity",
+                                "type": "int4"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "testdb.public.top_products",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "num_orders",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_quantity",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_value",
+                                "type": "int8"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    },
+                    "columnLineage": {
+                        "fields": {
+                            "product": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "product",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "num_orders": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "order_id",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_value": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "price",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    },
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_quantity": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            }
+                        },
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ColumnLineageDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:42.95194Z",
+        "eventType": "START"
+    },
+    {
+        "job": {
+            "name": "order_analysis",
+            "facets": {},
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "69b3f1ff-2318-37cb-afb3-35d818a04b0d",
+            "facets": {}
+        },
+        "inputs": [],
+        "outputs": [],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:44.334181Z",
+        "eventType": "COMPLETE"
+    },
+    {
+        "job": {
+            "name": "order_analysis.find_popular_products",
+            "facets": {
+                "sql": {
+                    "query": "DROP TABLE IF EXISTS top_products;\n\n\nCREATE TABLE top_products AS\nSELECT\n    product,\n    COUNT(order_id) AS num_orders,\n    SUM(quantity) AS total_quantity,\n    SUM(price * quantity) AS total_value\nFROM\n    orders\nGROUP BY\n    product\nORDER BY\n    total_value desc,\n    num_orders desc",
+                    "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                    "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SqlJobFacet"
+                }
+            },
+            "namespace": "default"
+        },
+        "run": {
+            "runId": "bf0acdf2-967c-3278-982b-1ed4c4941e07",
+            "facets": {}
+        },
+        "inputs": [
+            {
+                "name": "testdb.public.orders",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "order_id",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "order_date",
+                                "type": "timestamp"
+                            },
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "price",
+                                "type": "int4"
+                            },
+                            {
+                                "name": "quantity",
+                                "type": "int4"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "testdb.public.top_products",
+                "facets": {
+                    "schema": {
+                        "fields": [
+                            {
+                                "name": "product",
+                                "type": "bpchar"
+                            },
+                            {
+                                "name": "num_orders",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_quantity",
+                                "type": "int8"
+                            },
+                            {
+                                "name": "total_value",
+                                "type": "int8"
+                            }
+                        ],
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/SchemaDatasetFacet"
+                    },
+                    "dataSource": {
+                        "uri": "postgres://caymus.rtrk.us/testdb",
+                        "name": "postgres://caymus.rtrk.us:None",
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/DataSourceDatasetFacet"
+                    },
+                    "columnLineage": {
+                        "fields": {
+                            "product": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "product",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "num_orders": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "order_id",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_value": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "price",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    },
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            },
+                            "total_quantity": {
+                                "inputFields": [
+                                    {
+                                        "name": "public.orders",
+                                        "field": "quantity",
+                                        "namespace": "postgres://caymus.rtrk.us:None"
+                                    }
+                                ],
+                                "transformationType": "",
+                                "transformationDescription": ""
+                            }
+                        },
+                        "_producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+                        "_schemaURL": "https://raw.githubusercontent.com/OpenLineage/OpenLineage/main/spec/OpenLineage.json#/definitions/ColumnLineageDatasetFacet"
+                    }
+                },
+                "namespace": "postgres://caymus.rtrk.us:None"
+            }
+        ],
+        "producer": "https://github.com/OpenLineage/OpenLineage/tree/0.20.6/integration/airflow",
+        "eventTime": "2023-02-27T23:06:43.602664Z",
+        "eventType": "COMPLETE"
+    }
+]
